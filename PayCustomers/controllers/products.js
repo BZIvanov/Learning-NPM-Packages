@@ -24,3 +24,14 @@ module.exports.createProduct = async (req, res, next) => {
     res.status(500).json(err);
   }
 };
+
+module.exports.removeProduct = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const product = await stripe.products.del(id);
+
+    res.status(200).json({ product });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};

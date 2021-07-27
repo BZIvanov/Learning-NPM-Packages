@@ -26,9 +26,9 @@ module.exports.createCustomer = async (req, res, next) => {
   }
 };
 
-module.exports.removeCustomers = async (req, res, next) => {
+module.exports.removeCustomer = async (req, res, next) => {
   try {
-    const { id } = req.body;
+    const { id } = req.params;
     const customer = await stripe.customers.del(id);
 
     res.status(200).json({ customer });

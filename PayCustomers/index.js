@@ -10,4 +10,5 @@ app.use(express.json());
 
 app.use(stripeRoutes);
 
-app.listen(3100, () => console.log('Listening on port 3100...'));
+const port = process.env.PORT || 3000;
+app.listen(port, () => console.log(`Listening on port ${port}...`));

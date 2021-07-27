@@ -18,6 +18,19 @@ module.exports.createPaymentMethod = async (req, res, next) => {
   }
 };
 
+module.exports.getPaymentMethod = async (req, res, next) => {
+  try {
+    const { paymentId } = req.params;
+    console.log('here');
+
+    const paymentMethod = await stripe.paymentMethods.retrieve(paymentId);
+
+    res.status(200).json({ paymentMethod });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
 module.exports.attachPaymentMethod = async (req, res, next) => {
   try {
     const { paymentId } = req.params;
