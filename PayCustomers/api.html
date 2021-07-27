@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        font-family: sans-serif;
+      }
+      body {
+        padding: 10px;
+      }
+      hr {
+        margin: 15px 0;
+      }
+      h3 {
+        text-align: center;
+        padding: 5px;
+      }
+      .title {
+        display: flex;
+        margin-bottom: 3px;
+        background-color: rgb(37, 86, 126);
+        color: rgb(243, 252, 252);
+        padding: 3px;
+      }
+      .route {
+        padding: 5px;
+        border: 1px solid rgb(204, 204, 204);
+      }
+      .get {
+        background-color: #e9f0c6;
+        padding: 3px;
+      }
+      .post {
+        background-color: #caecee;
+        padding: 3px;
+      }
+      .put {
+        background-color: #dbcaee;
+        padding: 3px;
+      }
+      .delete {
+        background-color: #eed2ca;
+        padding: 3px;
+      }
+      .body {
+        padding-left: 10px;
+      }
+      ul {
+        margin: 3px 15px;
+      }
+      .details {
+        background-color: rgb(245, 242, 242);
+        padding: 5px;
+      }
+    </style>
+    <meta charset="UTF-8" />
+    <title>API</title>
+  </head>
+  <body>
+    <div>
+      <h3>Customers</h3>
+      <div class="route">
+        <div class="title">
+          <h4>List all customers</h4>
+        </div>
+        <p class="get"><strong>GET</strong> /customers</p>
+        <div class="details">
+          <p>Details:</p>
+          <ul>
+            <li>
+              You can find your customers by clicking
+              <strong>Customers</strong> on the left panel in the Stripe
+              dashboard
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="route">
+        <div class="title">
+          <h4>Create customer</h4>
+        </div>
+        <p class="post"><strong>POST</strong> /customers</p>
+        <div class="body">
+          <pre>
+{
+  "email": "some.user@mail.com",
+  "description": "my first customer"
+}
+          </pre>
+        </div>
+      </div>
+      <div class="route">
+        <div class="title">
+          <h4>Delete customer</h4>
+        </div>
+        <p class="delete"><strong>DELETE</strong> /customers/:id</p>
+      </div>
+    </div>
+
+    <hr />
+
+    <div>
+      <h3>Products</h3>
+      <div class="route">
+        <div class="title">
+          <h4>List all products</h4>
+        </div>
+        <p class="get"><strong>GET</strong> /products</p>
+        <div class="details">
+          <p>Details:</p>
+          <ul>
+            <li>
+              You can find your products by clicking
+              <strong>Products</strong> on the left panel in the Stripe
+              dashboard
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="route">
+        <div class="title">
+          <h4>Create product</h4>
+        </div>
+        <p class="post"><strong>POST</strong> /products</p>
+        <div class="body">
+          <pre>
+{
+  "name": "White handbag"
+}
+          </pre>
+        </div>
+      </div>
+      <div class="route">
+        <div class="title">
+          <h4>Delete product</h4>
+        </div>
+        <p class="delete"><strong>DELETE</strong> /products/:id</p>
+      </div>
+    </div>
+
+    <hr />
+
+    <div>
+      <h3>Prices</h3>
+      <div class="route">
+        <div class="title">
+          <h4>List all prices</h4>
+        </div>
+        <p class="get"><strong>GET</strong> /prices</p>
+        <div class="details">
+          <p>Details:</p>
+          <ul>
+            <li>
+              You can find your products by clicking
+              <strong>Products</strong> on the left panel in the Stripe
+              dashboard
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="route">
+        <div class="title">
+          <h4>Create price</h4>
+        </div>
+        <p class="post"><strong>POST</strong> /prices</p>
+        <div class="body">
+          <pre>
+{
+  "productId": "prod_J79ENxF7F2waCO"
+}
+          </pre>
+        </div>
+        <div class="details">
+          <p>Details:</p>
+          <ul>
+            <li>
+              A price is always attached to a product, so you should provide
+              existing product ID.
+            </li>
+            <li>
+              You can delete a price in the Dashboard by navigating to the
+              product details. You can't delete prices which were used in
+              transactions, only archive them.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <hr />
+
+    <div>
+      <h3>Payment methods</h3>
+      <div class="route">
+        <div class="title">
+          <h4>Get payment method</h4>
+        </div>
+        <p class="get"><strong>GET</strong> /payment-methods/:paymentId</p>
+      </div>
+      <div class="route">
+        <div class="title">
+          <h4>Create payment method</h4>
+        </div>
+        <p class="post"><strong>POST</strong> /payment-methods</p>
+        <div class="details">
+          <p>Details:</p>
+          <ul>
+            <li>Creates payment method of type 'card'</li>
+          </ul>
+        </div>
+      </div>
+      <div class="route">
+        <div class="title">
+          <h4>Attach payment method to a customer</h4>
+        </div>
+        <p class="post"><strong>POST</strong> /payment-methods/:paymentId</p>
+        <div class="body">
+          <pre>
+{
+  "customerId": "cus_JvYTcuCbxVeluF"
+}
+          </pre>
+        </div>
+      </div>
+    </div>
+
+    <hr />
+
+    <div>
+      <h3>Subscriptions</h3>
+      <div class="route">
+        <div class="title">
+          <h4>List all subscriptions</h4>
+        </div>
+        <p class="get"><strong>GET</strong> /subscriptions</p>
+      </div>
+      <div class="route">
+        <div class="title">
+          <h4>Create payment method</h4>
+        </div>
+        <p class="post"><strong>POST</strong> /subscriptions</p>
+        <div class="body">
+          <pre>
+{
+  "customerId": "cus_JvYTcuCbxVeluF",
+  "priceId": "price_1IUz4QCE2xwH3UTcjI87II7m"
+}
+          </pre>
+        </div>
+        <div class="details">
+          <p>Details:</p>
+          <ul>
+            <li>Creates subscription for chosen customer</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
