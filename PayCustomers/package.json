@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon"
+    "start": "nodemon",
+    "not-implemented": "Read the README.md -> Stripe CLI for the webhooks part"
   },
   "keywords": [],
   "author": "",

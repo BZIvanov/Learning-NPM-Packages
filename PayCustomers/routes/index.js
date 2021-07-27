@@ -19,6 +19,7 @@ const {
   listSubscriptions,
   createSubscription,
 } = require('../controllers/subscriptions');
+const { webhook } = require('../controllers/webhook');
 
 // CUSTOMERS
 router.route('/customers').get(listCustomers).post(createCustomer);
@@ -40,5 +41,9 @@ router
 
 // SUBSCRIPTIONS
 router.route('/subscriptions').get(listSubscriptions).post(createSubscription);
+
+// WEBHOOK
+// you are not going to call this endpoint manually (with postman for example) stripe webhook will call it
+router.route('/webhook').post(webhook);
 
 module.exports = router;
