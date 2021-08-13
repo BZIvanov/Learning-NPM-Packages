@@ -18,3 +18,4 @@ This repo contains examples with demo usage of different npm packages.
 | Compress     | <ul><li>gzipper</li></ul>                                  |
 | Sequel       | <ul><li>sequelize</li></ul>                                |
 | Jira         | <ul><li>jira.js</li></ul>                                  |
+| Immutable    | <ul><li>immutable</li></ul>                                |
