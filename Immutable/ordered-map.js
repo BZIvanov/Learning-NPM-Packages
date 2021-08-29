@@ -1,11 +1,11 @@
-const { Map } = Immutable;
+const { OrderedMap } = Immutable;
 
-console.log('---------MAP---------');
+console.log('---------ORDERED MAP---------');
 
-const scores = Map({ Iva: 9, Mira: 7, Toni: 8 });
+const scores = OrderedMap({ Iva: 9, Mira: 7, Toni: 8 });
 scores.set('Mira', 7.5);
 
-console.log('Scores Map: ', scores);
+console.log('Scores Ordered Map: ', scores);
 
 console.log('Scores size: ', scores.size);
 console.log('Iva score: ', scores.get('Iva'));
