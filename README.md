@@ -18,5 +18,6 @@ This repo contains examples with demo usage of different npm packages.
 | Compress      | <ul><li>gzipper</li></ul>                                  |
 | Sequel        | <ul><li>sequelize</li></ul>                                |
 | Jira          | <ul><li>jira.js</li></ul>                                  |
+| JiraOAuth2    | <ul><li>Jira API - not specific NPM package</li></ul>      |
 | Immutable     | <ul><li>immutable</li></ul>                                |
 | SlackMessages | <ul><li>slack use</li></ul>                                |
