@@ -3,13 +3,14 @@ const Credentials = require('../models/jira');
 
 module.exports.getAllProjects = async (req, res) => {
   try {
-    const { name } = req.query;
-    const creds = await Credentials.findOne({ name }).exec();
+    const credentials = await Credentials.findOne({
+      state: 'some-secret-string',
+    }).exec();
 
     const { data: projects } = await axios.get(
-      `https://api.atlassian.com/ex/jira/${creds.cloudID}/rest/api/2/project`,
+      `https://api.atlassian.com/ex/jira/${credentials.siteId}/rest/api/2/project`,
       {
-        headers: { Authorization: `Bearer ${creds.accessToken}` },
+        headers: { Authorization: `Bearer ${credentials.accessToken}` },
       }
     );
 
@@ -29,11 +30,12 @@ module.exports.createProject = async (req, res) => {
       });
     }
 
-    const { name } = req.query;
-    const creds = await Credentials.findOne({ name }).exec();
+    const credentials = await Credentials.findOne({
+      state: 'some-secret-string',
+    }).exec();
 
     const { data: project } = await axios.post(
-      `https://api.atlassian.com/ex/jira/${creds.cloudID}/rest/api/2/project`,
+      `https://api.atlassian.com/ex/jira/${credentials.siteId}/rest/api/2/project`,
       {
         name: projectName,
         key,
@@ -43,7 +45,7 @@ module.exports.createProject = async (req, res) => {
           'com.pyxis.greenhopper.jira:gh-simplified-agility-scrum',
       },
       {
-        headers: { Authorization: `Bearer ${creds.accessToken}` },
+        headers: { Authorization: `Bearer ${credentials.accessToken}` },
       }
     );
 

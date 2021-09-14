@@ -17,9 +17,7 @@ const Projects = () => {
   const [users, setUsers] = useState([]);
 
   const getUsers = async () => {
-    const { data } = await axios.get('http://localhost:3001/get-all-users', {
-      params: { name: 'my-jira-username' },
-    });
+    const { data } = await axios.get('http://localhost:3001/get-all-users');
     setUsers(data);
   };
 
