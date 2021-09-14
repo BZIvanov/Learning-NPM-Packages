@@ -3,14 +3,14 @@ const Credentials = require('../models/jira');
 
 module.exports.getAllUsers = async (req, res) => {
   try {
-    const { name } = req.query;
-
-    const creds = await Credentials.findOne({ name }).exec();
+    const credentials = await Credentials.findOne({
+      state: 'some-secret-string',
+    }).exec();
 
     const { data: users } = await axios.get(
-      `https://api.atlassian.com/ex/jira/${creds.cloudID}/rest/api/2/users/search`,
+      `https://api.atlassian.com/ex/jira/${credentials.siteId}/rest/api/2/users/search`,
       {
-        headers: { Authorization: `Bearer ${creds.accessToken}` },
+        headers: { Authorization: `Bearer ${credentials.accessToken}` },
       }
     );
 

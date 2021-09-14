@@ -1,11 +1,17 @@
 const router = require('express').Router();
-const { getOAuth } = require('../controllers/oauth');
+const {
+  initialRun,
+  getNewAccessToken,
+  accessResourcesId,
+} = require('../controllers/oauth');
 const { getAllUsers } = require('../controllers/users');
 const { getAllProjects, createProject } = require('../controllers/projects');
 
 // OAUTH2
 // https://developer.atlassian.com/cloud/jira/platform/oauth-2-3lo-apps/
-router.get('/jira-oauth', getOAuth);
+router.get('/initial-run', initialRun);
+router.get('/renew-tokens', getNewAccessToken);
+router.get('/resources-site', accessResourcesId);
 
 // USERS
 // https://developer.atlassian.com/cloud/jira/platform/rest/v2/api-group-users/#api-group-users

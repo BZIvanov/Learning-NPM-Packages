@@ -17,24 +17,16 @@ const Projects = () => {
   const [projects, setProjects] = useState([]);
 
   const getProjects = async () => {
-    const { data } = await axios.get('http://localhost:3001/get-all-projects', {
-      params: { name: 'my-jira-username' },
-    });
+    const { data } = await axios.get('http://localhost:3001/get-all-projects');
     setProjects(data);
   };
 
   const createProject = async () => {
-    const { data } = await axios.post(
-      'http://localhost:3001/create-project',
-      {
-        name: 'More project',
-        key: 'MMP',
-        accountId: '61c0b4d1f6505400693531b3', // most likely to be the jira account owner user
-      },
-      {
-        params: { name: 'my-jira-username' },
-      }
-    );
+    const { data } = await axios.post('http://localhost:3001/create-project', {
+      name: 'My amazing project2',
+      key: 'MAP2',
+      accountId: '60c0b4d0f6505400693531b2',
+    });
     console.log(data);
   };
 
