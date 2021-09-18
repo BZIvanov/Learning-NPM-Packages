@@ -22,6 +22,9 @@ const Nav = () => {
         <li style={listItemStyles}>
           <Link to='/projects'>Projects</Link>
         </li>
+        <li style={listItemStyles}>
+          <Link to='/issues'>Issues</Link>
+        </li>
       </ul>
     </nav>
   );
