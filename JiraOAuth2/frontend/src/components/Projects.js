@@ -14,6 +14,7 @@ const imgStyles = {
 };
 
 const Projects = () => {
+  const [project, setProject] = useState(null);
   const [projects, setProjects] = useState([]);
 
   const getProjects = async () => {
@@ -21,10 +22,17 @@ const Projects = () => {
     setProjects(data);
   };
 
+  const getProject = async () => {
+    const { data } = await axios.get('http://localhost:3001/get-project', {
+      params: { key: 'MAP' },
+    });
+    setProject(data);
+  };
+
   const createProject = async () => {
     const { data } = await axios.post('http://localhost:3001/create-project', {
-      name: 'My amazing project2',
-      key: 'MAP2',
+      name: 'My amazing project',
+      key: 'MAP',
       accountId: '60c0b4d0f6505400693531b2',
     });
     console.log(data);
@@ -52,6 +60,19 @@ const Projects = () => {
         </ul>
       )}
       <hr />
+
+      <div>
+        <button onClick={getProject}>Get project</button>
+      </div>
+      {project && (
+        <ul>
+          <li>Key: {project.key}</li>
+          <li>ID: {project.id}</li>
+          <li>Name: {project.name}</li>
+        </ul>
+      )}
+      <hr />
+
       <div>
         <button onClick={createProject}>Create project</button>
       </div>

@@ -21,6 +21,33 @@ module.exports.getAllProjects = async (req, res) => {
   }
 };
 
+module.exports.getProject = async (req, res) => {
+  try {
+    const { key } = req.query; // key or id
+    if (!key) {
+      return res.status(400).json({
+        message: 'Project key or id is required.',
+      });
+    }
+
+    const credentials = await Credentials.findOne({
+      state: 'some-secret-string',
+    }).exec();
+
+    const { data: project } = await axios.get(
+      `https://api.atlassian.com/ex/jira/${credentials.siteId}/rest/api/2/project/${key}`,
+      {
+        headers: { Authorization: `Bearer ${credentials.accessToken}` },
+      }
+    );
+
+    res.json(project);
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({ error });
+  }
+};
+
 module.exports.createProject = async (req, res) => {
   try {
     const { name: projectName, key, accountId } = req.body;
