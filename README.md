@@ -21,3 +21,4 @@ This repo contains examples with demo usage of different npm packages.
 | JiraOAuth2    | <ul><li>Jira API - not specific NPM package</li></ul>      |
 | Immutable     | <ul><li>immutable</li></ul>                                |
 | SlackMessages | <ul><li>slack use</li></ul>                                |
+| ReactQuery    | <ul><li>react-query</li></ul>                              |
